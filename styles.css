@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    font-family: 'Poor Story', cursive;
+}
+.col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.col h2 {
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    transition: background 0.3s;
+    font-size: 3rem;
+}
+
+.col h2:hover {
+    background: rgb(0,0,0,0.1);
+    cursor: pointer;
+}
+.col button {
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 10px;
+}
+.col button:hover {
+    background: rgb(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#more{display: none}
+
+button {
+    padding: 2px 2px;
+    border: #ffffff 2px solid;
+    font-size: 2rem;
+    text-align: left;
+    //
+    background: transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.2) translateX(8px);
+}
+
+p {background: aqua; color: black; font-size: 90px }
