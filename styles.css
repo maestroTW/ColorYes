@@ -63,11 +63,19 @@ p {
     padding-top: 35px;
 }
 
-@media(max-width:480px) {
+@media(max-width:960px) {
     .btn {
         font-size: 1.5rem;
     }
-    .p {
+    #dots {
         font-size: 1.5rem;
+    }
+    .col{
+        height: calc(1/6*100%);
+        width: 100%;
+        flex-direction: row;
+    }
+    body{
+        flex-direction: column;
     }
 }
