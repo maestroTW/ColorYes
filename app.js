@@ -1,10 +1,10 @@
 const cols = document.querySelectorAll('.col');
 
-document.addEventListener('touchstart', function(event) {
-    if (event.code === 'Space') { console.log('start') } {
-        SetRandomColors()
-    }
-})
+// document.addEventListener('touchstart', function(event) {
+//     if (event.code === 'Space') { console.log('start') } {
+//         SetRandomColors()
+//     }
+// })
 document.addEventListener('keypress', function(event) {
     if (event.code === 'Space') { console.log('start') } {
         SetRandomColors()
@@ -25,6 +25,8 @@ document.addEventListener('click', event => {
     }
     else if (type === 'copy') {
         copyToClick(event.target.textContent)
+    } else if (type === 'random') {
+        SetRandomColors()
     }
 
 })
