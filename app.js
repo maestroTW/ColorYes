@@ -26,6 +26,7 @@ document.addEventListener('click', event => {
     else if (type === 'copy') {
         copyToClick(event.target.textContent)
     } else if (type === 'random') {
+        // Если нажато на цвет
         SetRandomColors()
     }
 
@@ -49,31 +50,62 @@ function copyToClick(text) {
     return navigator.clipboard.writeText(text)
 }
 
-function SetRandomColors() {
-    const colors = []
+function LoadColors() {
+    //Загрузка цветов
 
-    cols.forEach((col) => {
-        const isLoked = col.querySelector('i').classList.contains('fa-lock')
+    //Хэш из URL
+    // - заменено на # и хещ поделен по 7 символов
+    const hash = window.location.hash.replaceAll("-", "#").match(/.{1,7}/g)
+
+    SetColors(hash)
+
+}
+
+function SetColors(colors) {
+
+
+
+    cols.forEach((col, index) => {
+
         const text = col.querySelector('h2')
         const button = col.querySelector('button')
-        const color = generateRandomColor()
 
-        if (isLoked) {
-            colors.push(text.textContent)
-            return
-        }
-
-        colors.push(color)
+        const color = colors[index]
 
         text.textContent = color
         col.style.background = color
 
+
         setTextColor(text, color)
         setTextColor(button, color)
     })
+}
+
+function SetRandomColors() {
+    const colors = []
+
+    cols.forEach((col) => {
+        const isLocked = col.querySelector('i').classList.contains('fa-lock')
+        const color = generateRandomColor()
+
+        console.log(color)
+        if (isLocked) {
+
+            return 0
+        }
+        colors.push(color)
+    })
+
+
+
+
+
+    SetColors(colors)
 
     updateColorsHash(colors)
 }
+
+
 
 function setTextColor(text, color) {
     const luminance = chroma(color).luminance()
@@ -93,7 +125,7 @@ function getColorsFromHash() {
     return []
 }
 
-SetRandomColors()
+
 
 function readMore() {
     const dots = document.getElementById("dots");
@@ -121,3 +153,16 @@ function readMore() {
         more.style.display = "none";
     }
 }
+
+function init(){
+    const hash = window.location.hash.replace("#", "").split("-")
+
+    if(hash === [''])
+    return SetRandomColors()
+
+    LoadColors()
+
+
+}
+
+init()
